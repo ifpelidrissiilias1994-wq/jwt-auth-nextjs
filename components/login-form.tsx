@@ -143,6 +143,23 @@ export function LoginForm() {
               </>
             )}
           </Button>
+
+          <div className="relative flex items-center my-2">
+            <div className="flex-1 border-t" style={{ borderColor: '#e5e5e5' }} />
+            <span className="px-3 text-xs" style={{ color: '#aaa' }}>o</span>
+            <div className="flex-1 border-t" style={{ borderColor: '#e5e5e5' }} />
+          </div>
+
+          <a href="/register" className="block">
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full h-11 font-semibold border-2 transition-all duration-200"
+              style={{ borderColor: '#225560', color: '#225560' }}
+            >
+              Crear cuenta nueva
+            </Button>
+          </a>
         </form>
 
         <div
@@ -154,19 +171,6 @@ export function LoginForm() {
           </p>
           <p className="text-xs" style={{ color: '#555' }}>📧 MariaCamila@gmail.com</p>
           <p className="text-xs" style={{ color: '#555' }}>🔑 1234</p>
-        </div>
-
-        <div className="mt-4 text-center">
-          <p className="text-xs" style={{ color: '#888' }}>
-            ¿No tienes cuenta?{' '}
-            <a
-              href="/register"
-              className="font-semibold underline transition-colors"
-              style={{ color: '#225560' }}
-            >
-              Regístrate aquí
-            </a>
-          </p>
         </div>
       </CardContent>
     </Card>
