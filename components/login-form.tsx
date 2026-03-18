@@ -35,10 +35,8 @@ export function LoginForm() {
         return
       }
 
-      // Store token and user in localStorage as well
       localStorage.setItem('auth-token', data.token)
       localStorage.setItem('auth-user', JSON.stringify(data.user))
-
       router.push('/dashboard')
     } catch {
       setError('Error de conexión. Inténtalo de nuevo.')
@@ -48,15 +46,27 @@ export function LoginForm() {
   }
 
   return (
-    <Card className="w-full max-w-md shadow-2xl border-0 bg-white/95 backdrop-blur">
+    <Card
+      className="w-full shadow-2xl border-0"
+      style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(12px)' }}
+    >
       <CardHeader className="space-y-2 pb-6">
-        <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 mx-auto mb-2 shadow-lg">
+        <div
+          className="flex items-center justify-center w-14 h-14 rounded-2xl mx-auto mb-2 shadow-lg"
+          style={{ background: 'linear-gradient(135deg, #F0386B, #FF5376)' }}
+        >
           <LogIn className="w-7 h-7 text-white" />
         </div>
-        <CardTitle className="text-2xl font-bold text-center text-gray-800">
-          Bienvenido
+        <CardTitle
+          className="text-2xl font-bold text-center"
+          style={{ color: '#171219', fontFamily: 'var(--font-outfit)' }}
+        >
+          Bienvenida
         </CardTitle>
-        <CardDescription className="text-center text-gray-500">
+        <CardDescription
+          className="text-center text-sm"
+          style={{ color: '#888', fontFamily: 'var(--font-outfit)' }}
+        >
           Accede a tu panel privado
         </CardDescription>
       </CardHeader>
@@ -64,23 +74,23 @@ export function LoginForm() {
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-gray-700 font-medium">
+            <Label htmlFor="email" className="font-medium" style={{ color: '#171219' }}>
               Email
             </Label>
             <Input
               id="email"
               type="email"
-              placeholder="admin@tomates.com"
+              placeholder="MariaCamila@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
-              className="h-11 border-gray-200 focus:border-emerald-500 focus:ring-emerald-500"
+              className="h-11 border-gray-200 focus-visible:ring-0 focus-visible:border-[#F0386B] transition-colors"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="password" className="text-gray-700 font-medium">
+            <Label htmlFor="password" className="font-medium" style={{ color: '#171219' }}>
               Contraseña
             </Label>
             <div className="relative">
@@ -92,12 +102,13 @@ export function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 autoComplete="current-password"
-                className="h-11 pr-10 border-gray-200 focus:border-emerald-500 focus:ring-emerald-500"
+                className="h-11 pr-10 border-gray-200 focus-visible:ring-0 focus-visible:border-[#F0386B] transition-colors"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors"
+                style={{ color: '#aaa' }}
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
@@ -105,7 +116,10 @@ export function LoginForm() {
           </div>
 
           {error && (
-            <div className="flex items-center gap-2 p-3 rounded-lg bg-red-50 border border-red-200 text-red-600 text-sm">
+            <div
+              className="flex items-center gap-2 p-3 rounded-lg text-sm"
+              style={{ background: '#fff0f3', border: '1px solid #FF5376', color: '#F0386B' }}
+            >
               <AlertCircle className="w-4 h-4 flex-shrink-0" />
               {error}
             </div>
@@ -114,7 +128,8 @@ export function LoginForm() {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full h-11 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold shadow-md transition-all duration-200"
+            className="w-full h-11 font-semibold shadow-md text-white transition-all duration-200 border-0"
+            style={{ background: 'linear-gradient(135deg, #F0386B, #FF5376)' }}
           >
             {loading ? (
               <>
@@ -130,10 +145,15 @@ export function LoginForm() {
           </Button>
         </form>
 
-        <div className="mt-6 p-3 rounded-lg bg-gray-50 border border-gray-100">
-          <p className="text-xs text-gray-500 font-medium mb-1">Credenciales de prueba:</p>
-          <p className="text-xs text-gray-600">📧 admin@tomates.com</p>
-          <p className="text-xs text-gray-600">🔑 1234</p>
+        <div
+          className="mt-6 p-3 rounded-lg border"
+          style={{ background: '#fffbe6', borderColor: '#FAF33E' }}
+        >
+          <p className="text-xs font-medium mb-1" style={{ color: '#171219' }}>
+            Credenciales de prueba:
+          </p>
+          <p className="text-xs" style={{ color: '#555' }}>📧 MariaCamila@gmail.com</p>
+          <p className="text-xs" style={{ color: '#555' }}>🔑 1234</p>
         </div>
       </CardContent>
     </Card>

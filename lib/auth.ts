@@ -29,9 +29,9 @@ export async function verifyToken(token: string): Promise<JWTPayload | null> {
 
 export const VALID_USERS = [
   {
-    email: 'admin@tomates.com',
+    email: 'MariaCamila@gmail.com',
     password: '1234',
-    name: 'Admin Tomates',
-    role: 'Administrador',
+    name: 'Maria Camila',
+    role: 'Administradora',
   },
 ]
