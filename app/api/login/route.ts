@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { signToken, VALID_USERS } from '@/lib/auth'
+import { signToken, findUser } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json()
 
-    const user = VALID_USERS.find(
-      (u) => u.email === email && u.password === password
-    )
+    const user = findUser(email, password)
 
     if (!user) {
       return NextResponse.json(
@@ -27,7 +25,6 @@ export async function POST(request: NextRequest) {
       user: { email: user.email, name: user.name, role: user.role },
     })
 
-    // Also set httpOnly cookie for middleware protection
     response.cookies.set('auth-token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',

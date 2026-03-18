@@ -12,5 +12,5 @@ export default async function DashboardPage() {
   const user = await verifyToken(token)
   if (!user) redirect('/login')
 
-  return <DashboardClient user={user} />
+  return <DashboardClient user={user} token={token} />
 }

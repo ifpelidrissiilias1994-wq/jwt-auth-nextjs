@@ -5,10 +5,12 @@ import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { User, Shield, Code2, Tag, BookOpen, Terminal, Layout, Link, Image, List, Table2, FileText, Layers, Box, Type, Minus } from 'lucide-react'
 import { Navbar } from '@/components/navbar'
+import { TokenStatus } from '@/components/token-status'
 import type { JWTPayload } from '@/lib/auth'
 
 interface DashboardClientProps {
   user: JWTPayload
+  token: string
 }
 
 const HTML_TAGS = [
@@ -40,7 +42,7 @@ const COURSE_FUNCTIONS = [
   { name: 'cookies()', desc: 'Gestión de cookies en el servidor', accent: false },
 ]
 
-export function DashboardClient({ user }: DashboardClientProps) {
+export function DashboardClient({ user, token }: DashboardClientProps) {
   return (
     <div className="min-h-screen" style={{ background: '#f8f9fa', fontFamily: 'var(--font-outfit)' }}>
       <Navbar />
@@ -91,6 +93,9 @@ export function DashboardClient({ user }: DashboardClientProps) {
             </div>
           </CardContent>
         </Card>
+
+        {/* Token Status */}
+        <TokenStatus token={token} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* HTML Tags Card */}
