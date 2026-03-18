@@ -156,18 +156,6 @@ export function LoginForm() {
           <p className="text-xs" style={{ color: '#555' }}>🔑 1234</p>
         </div>
 
-        <div className="mt-4 text-center">
-          <p className="text-xs" style={{ color: '#888' }}>
-            ¿No tienes cuenta?{' '}
-            <a
-              href="/register"
-              className="font-semibold underline transition-colors"
-              style={{ color: '#225560' }}
-            >
-              Regístrate aquí
-            </a>
-          </p>
-        </div>
       </CardContent>
     </Card>
   )
