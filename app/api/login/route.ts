@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { signToken, findUser } from '@/lib/auth'
+import { signToken, VALID_USERS } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json()
 
-    const user = findUser(email, password)
+    const user = VALID_USERS.find(
+      (u) => u.email === email && u.password === password
+    )
 
     if (!user) {
       return NextResponse.json(
